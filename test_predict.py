@@ -21,3 +21,11 @@ def test_prediction(test_case):
     assert response.status_code == 200
     result = response.json()
     assert result["prediction"] == test_case["gt"]
+
+    response = requests.post(
+        BASE_URL,
+        json={"article":""},
+        headers={"Content-Type": "application/json"}
+    )
+    assert response.status_code == 400
+    
